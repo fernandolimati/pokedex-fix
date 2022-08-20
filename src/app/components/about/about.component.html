@@ -1,0 +1,33 @@
+<main>
+    <ng-template [ngIf]="isLoading">
+        <mat-card class="example-card" >
+
+            <mat-card-content>
+                <mat-card-title class="title"> 
+                    {{ pokemon[0].name }}
+                </mat-card-title>
+                <mat-card-subtitle> {{ pokemon[1].names[0].name }} </mat-card-subtitle>
+            </mat-card-content>
+
+            <img mat-card-lg-image [src]="pokemon[0].sprites.other.dream_world.front_default" >
+
+            <mat-card-subtitle>Statistics</mat-card-subtitle>
+
+            <mat-card-content *ngFor="let value of pokemon[0].stats">
+                    {{ value.stat.name }}
+                <strong>
+                    {{ value.base_stat }}
+                </strong>
+            </mat-card-content>
+
+            
+            <button [routerLink]="['']" mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                <mat-icon>home</mat-icon>
+            </button>
+        </mat-card>
+
+    </ng-template>
+</main>
+
+
+

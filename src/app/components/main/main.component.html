@@ -1,0 +1,16 @@
+<main>
+    
+    <ng-template ngFor let-pokemon [ngForOf]="listPokemons">
+
+        <mat-card-content class= "example-card"> 
+            <mat-card [routerLink]="['/about', pokemon.status.id]" class="pokemon" *ngIf="pokemon.status">
+                <mat-card-title-group> 
+                    <mat-card-title class="title"> {{ pokemon.name }} </mat-card-title> 
+                    <mat-card-subtitle *ngFor="let value of pokemon.status.types" class="text" > {{ value.type.name }} </mat-card-subtitle> 
+                </mat-card-title-group> 
+                <img  mat-card-lg-image  [src]="pokemon.status.sprites.other.dream_world.front_default" [alt]="pokemon.name"> 
+            </mat-card>
+        </mat-card-content>
+
+    </ng-template>
+</main>
