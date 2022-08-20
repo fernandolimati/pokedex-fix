@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   }
 
   getPokemons(){
-    this.mainService.getPokemons().subscribe( res => {
+    this.mainService.listAllPokemons().subscribe( res => {
       this.listPokemons = res.results;
       });
   }

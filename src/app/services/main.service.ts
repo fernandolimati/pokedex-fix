@@ -9,24 +9,24 @@ export class MainService {
 
   private baseUrl: string = 'https://pokeapi.co/api/v2/pokemon?offset=0&limit=151';
 
-  constructor( private http: HttpClient) { 
-    this.getPokemons();
+  constructor( private http: HttpClient) {
+    this.listAllPokemons();
   }
 
-  getPokemons(){
+  listAllPokemons(){
     return this.http.get<any>(this.baseUrl)
-    .pipe(tap( res => res ), 
+    .pipe(tap( res => res ),
       tap( res => {
         res.results.map( ( resPokemons:any ) => {
 
-          this.apiGetPokemons(resPokemons.url).subscribe( res => resPokemons.status = res )
+          this.getPokemon(resPokemons.url).subscribe( res => resPokemons.status = res )
 
         })
       })
     )
   }
 
-  public apiGetPokemons( url: string){
+  getPokemon(url: string){
     return this.http.get<any>( url ).pipe(
       map(
         res => res

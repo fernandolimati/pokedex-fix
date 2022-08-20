@@ -26,13 +26,10 @@ export class AboutComponent implements OnInit {
     this.getPokemon();
   }
 
-  getPokemon(){
+  private getPokemon(){
     const id = this.activatedRoute.snapshot.params['id'];
-    console.log(this.activatedRoute.snapshot.params['id']);
-    console.log(`${this.urlPokemon}/${id}`);
-    console.log(`${this.urlName}/${id}`);
-    const pokemon = this.mainService.apiGetPokemons(`${this.urlPokemon}/${id}`);
-    const name = this.mainService.apiGetPokemons(`${this.urlName}/${id}`);
+    const pokemon = this.mainService.getPokemon(`${this.urlPokemon}/${id}`);
+    const name = this.mainService.getPokemon(`${this.urlName}/${id}`);
 
     return forkJoin([pokemon, name]).subscribe(
       res => {
